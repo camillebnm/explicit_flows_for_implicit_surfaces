@@ -97,7 +97,7 @@ meshlab results/morph_gts-gtc_interpolation/outputs/meanw_time_*
 
 
 ## Replicate results
-To replicate the fisrt of figure 5 of our paper, please run the following : 
+To replicate the first of figure 5 of our paper, please run the following : 
 ```
 python reconstruct.py results/pretrained/morph_armadillo-blob_interpolation/ --modes meanw -t linspace 6 -r 256
 meshlab results/pretrained/morph_armadillo-blob_interpolation/outputs/meanw_time_0*
