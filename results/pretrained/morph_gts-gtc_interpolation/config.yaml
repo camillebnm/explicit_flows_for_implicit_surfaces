@@ -1,0 +1,56 @@
+loss:
+  type: morphing_sirens
+  value:
+    D: 10000.0
+    I: 10.0
+    N: 100.0
+    S: 100.0
+    T: 10.0
+    V: 1.0
+network:
+  archi:
+  - full
+  - 2
+  - 2
+  base: RealNVP
+  hidden_layer_nodes:
+  - 128
+  - 128
+  - 128
+  - 128
+  - 128
+  - 128
+  init: identity
+  init_method: None
+  omega_0: 60
+  style: siren
+optimizer:
+  lr: 5e-5
+  type: adam
+training:
+  checkpoint_times:
+  - 0.0
+  - 0.2
+  - 0.4
+  - 0.6
+  - 0.8
+  - 1.0
+  checkpoints_at_every_epoch: 5000
+  n_epochs: 1
+training_data:
+  batchsize: 20000
+  mesh:
+    data/gtc.ply:
+      ni: ni/gtc.pth
+      omega_0: 60
+      t: 1.0
+    data/gts.ply:
+      ni: ni/gtc.pth
+      omega_0: 60
+      t: -0.0
+  n_on_surface: 20000
+  size: 3
+  timesampler:
+    range:
+    - 0.0
+    - 1.0

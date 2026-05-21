@@ -1,0 +1,51 @@
+loss:
+  type: edition
+  value:
+    B: 0.1
+    D: 10000.0
+    S: 10.0
+    T: 1.0
+network:
+  archi:
+  - full
+  - 2
+  - 2
+  base: RealNVP
+  hidden_layer_nodes:
+  - 128
+  - 128
+  - 128
+  - 128
+  - 128
+  - 128
+  init: identity
+  init_method: None
+  omega_0: 60
+  style: siren
+optimizer:
+  lr: 5e-5
+  type: adam
+training:
+  checkpoint_times:
+  - 0.0
+  - 0.2
+  - 0.4
+  - 0.6
+  - 0.8
+  - 1.0
+  checkpoints_at_every_epoch: 5000
+  n_epochs: 1
+training_data:
+  batchsize: 3000
+  mesh:
+    data/bar.ply:
+      corres: data/landmarks/deform_twist90.npy
+      ni: ni/bar.pth
+      omega_0: 30
+      t: -0.0
+  n_on_surface: 3000
+  size: 1
+  timesampler:
+    range:
+    - 0.0
+    - 1.0
