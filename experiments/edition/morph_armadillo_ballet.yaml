@@ -1,0 +1,36 @@
+network:
+  base: RealNVP
+  archi: [full, 2, 2]
+  style: siren
+  omega_0: 60
+  hidden_layer_nodes: [128, 128, 128,128,128,128]
+  init: identity
+
+training:
+  n_epochs: 45001
+  checkpoints_at_every_epoch: 5000
+  checkpoint_times: [0.0, 0.2, 0.4, 0.6, 0.8, 1.]
+
+loss:
+  type: edition
+  value: 
+    D: 1e4
+    S: 1e1
+    B: 1e-1
+    T: 1e0
+
+training_data:
+  batchsize: 3000
+  size : 1
+  timesampler:
+    range: [0., 1.]
+  mesh:
+    data/shapes/nfgparmadillo.ply:
+      ni: ni/nfgparmadillo.pth
+      corres: data/landmarks/nfgp_deform_ballet.npy
+      omega_0: 30
+      t: 0.
+
+optimizer : 
+    type : adam
+    lr : 5e-5

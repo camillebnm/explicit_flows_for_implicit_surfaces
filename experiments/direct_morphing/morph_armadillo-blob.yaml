@@ -1,0 +1,43 @@
+network:
+  base: RealNVP
+  archi: [full, 2, 2]
+  style: siren
+  omega_0: 60
+  hidden_layer_nodes: [128, 128, 128,128,128,128]
+  init: identity
+  init: identity
+
+training:
+  n_epochs: 45001
+  checkpoint_times: [0.0, 0.2, 0.4, 0.6, 0.8, 1.]
+
+loss:
+  type: morphing_sirens
+  value: 
+    D: 1e4
+    S: 1e2
+    N: 1e2
+    T: 1e1
+    I: 1e1
+    V: 1e0
+
+training_data:
+  batchsize: 3000
+  size : 1
+  timesampler:
+    range: [0., 1.]
+  mesh:
+    data/armadillo.ply:
+      ni: ni/armadillo.pth
+      omega_0: 60
+      t: -0.
+    data/blob.ply:
+      ni: ni/blob.pth
+      omega_0: 60
+      t: 1.
+
+
+optimizer : 
+    type : adam
+    lr : 5e-5
+

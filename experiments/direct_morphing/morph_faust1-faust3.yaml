@@ -1,0 +1,45 @@
+network:
+  base: RealNVP
+  archi: [full, 2, 2]
+  style: siren
+  omega_0: 60
+  hidden_layer_nodes: [128, 128, 128,128,128,128]
+  init: identity
+
+training:
+  n_epochs: 45001
+  checkpoints_at_every_epoch: 5000
+  checkpoint_times: [0.0, 0.2, 0.4, 0.6, 0.8, 1.]
+
+loss:
+  type: morphing_sirens
+  value: 
+    D: 1e4
+    S: 1e2
+    N: 1e2
+    T: 1e1
+    I: 1e1
+    V: 1e0
+
+training_data:
+  batchsize: 20000
+  size : 3
+  timesampler:
+    range: [0., 1.]
+  mesh:
+    data/faust1.ply:
+      ni: ni/faust1.pth
+      corres: corres/faust1.vts
+      omega_0: 60
+      t: -0.
+    data/faust3.ply:
+      ni: ni/faust3.pth
+      corres: corres/faust3.vts
+      omega_0: 60
+      t: 1.
+
+
+optimizer : 
+    type : adam
+    lr : 5e-5
+
