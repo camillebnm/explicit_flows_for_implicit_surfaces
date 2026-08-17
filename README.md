@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 Minimum example (after installation and activation)
 ```
-python train.py experiments/morph_gts-gtc.yaml
+python train.py experiments/direct_morphing/morph_gts-gtc.yaml
 python reconstruct.py results/morph_gts-gtc_interpolation/ --modes meanw -t linspace 24 -r 256
 ```
 The outputted files are standard .ply files in the folder `results/morph_gts-gtc_interpolation/outputs` and can be visualized by any standard software such as meshlab, blender, paraview ...
